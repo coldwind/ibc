@@ -3,6 +3,7 @@ package helper
 import (
 	"fmt"
 	"ibc/account"
+	"ibc/example/config"
 	"ibc/utils"
 	"math"
 	"math/big"
@@ -12,7 +13,7 @@ func BalanceAt() {
 	fmt.Println("call BalanceAt")
 
 	// get client
-	cli, err := utils.GetClient("https://cloudflare-eth.com")
+	cli, err := utils.GetClient(config.Rawurl)
 	if err != nil {
 		fmt.Println("get client error", err)
 		return
@@ -21,7 +22,7 @@ func BalanceAt() {
 	accountHandle := account.Account{}
 
 	// balance at
-	balance, err := accountHandle.BalanceAt(cli.Cli(), "0x71c7656ec7ab88b098defb751b7401b5f6d8976f")
+	balance, err := accountHandle.BalanceAt(cli.Cli(), config.FromAccount)
 	if err != nil {
 		fmt.Println("BalanceAt error", err)
 		return

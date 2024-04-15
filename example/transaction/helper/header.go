@@ -2,12 +2,15 @@ package helper
 
 import (
 	"fmt"
+	"ibc/example/config"
 	"ibc/utils"
 )
 
 func HeaderByNumber() {
+	fmt.Println("call HeaderByNumber")
+
 	// get client
-	cli, err := utils.GetClient("https://cloudflare-eth.com")
+	cli, err := utils.GetClient(config.Rawurl)
 	if err != nil {
 		fmt.Println("get client error", err)
 		return
